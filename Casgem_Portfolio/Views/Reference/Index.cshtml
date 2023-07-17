@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_PortfolioAdminLayout.cshtml";
+    int count = 0;
+}
+
+<h2>Referans Listesi</h2>
+
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Ad Soyad</th>
+        <th>Ünvan</th>
+        <th>Mail Adresi</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <td>@count</td>
+            <td>@item.ReferenceName</td>
+            <td>@item.ReferenceJob</td>
+            <td>@item.ReferenceMail</td>
+            <td><a href="/Reference/DeleteReference/@item.ReferenceID" class="btn btn-outline-danger">Sil</a></td>
+            <td><a href="/Reference/UpdateReference/@item.ReferenceID" class="btn btn-outline-success">Güncelle</a></td>
+        </tr>
+    }
+</table>
+
+<a href="/Reference/AddReference" class="btn btn-outline-primary">Referans Ekle</a>

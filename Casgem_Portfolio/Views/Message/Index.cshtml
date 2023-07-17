@@ -1,0 +1,50 @@
+﻿@model List<Casgem_Portfolio.Models.Entities.TblMessage>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_PortfolioAdminLayout.cshtml";
+    int count = 0;
+}
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+
+<h2>Gelen Kutusu</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Göndderen</th>
+        <th>Konu</th>
+        <th>Sil</th>
+        <th>Mesajı Aç</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <td>@count</td>
+            <td>@item.NameSurname</td>
+            <td>@item.MessageSubject</td>
+            <td><a href="/Message/DeleteMessage/@item.MessageID" class="btn btn-outline-danger" onclick="myFunction()">Sil</a></td>
+            <td><a href="/Message/MessageDetails/@item.MessageID" class="btn btn-outline-success">Mesajı Aç</a></td>
+        </tr>
+    }
+
+</table>
+
+
+<script>
+
+    function myFunction() {
+        swal("Good job!", "You clicked the button!", "success");
+    }
+
+
+</script>
+
+
+
+
+
